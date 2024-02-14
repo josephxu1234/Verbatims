@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% set pagetitle = "New User" %}
+{% include "head.html" %}
+
+<body>
+    <div class="d-flex justify-content-center">
+        <img style="height:100vh" class="bg-img" src="./static/verbatims.jpg">
+        <!-- userInfoModal -->
+        <div class="modal fade" id="userInfoModal" tabindex="-1" aria-labelledby="userInfoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userInfoModalLabel">Hello!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row mt-4">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <form action="create_new_user" method="post">
+                                        <input class='form-control' type="text" id="userfirstname" name="userfirstname"
+                                            placeholder="First Name" maxlength="50" autofocus required><br>
+                                        <input class='form-control' type="text" id="userlastname" name="userlastname"
+                                            placeholder="Last Name" maxlength="50" required><br>
+                                        <input class='form-control' type="text" id="userbio" name="userbio"
+                                            placeholder="Bio" maxlength="140"><br>
+                                        <input type="submit" class="btn btn-outline-primary w-100" value="Go">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+    <script>
+        function setup() {
+            $('#userInfoModal').modal('show');
+        }
+
+        $('document').ready(setup)
+    </script>
+</body>
+
+</html>

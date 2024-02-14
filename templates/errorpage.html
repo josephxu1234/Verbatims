@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% set pagetitle = "Error" %}
+{% include "head.html" %}
+<body class="text-center">
+    <br>
+    <h1>Sorry. You have reached the error page.</h1>
+    <strong>
+        <span>Your error is: <br></span>
+    </strong>
+    <span>{{ error_msg }}</span>
+    {% include "footer.html" %}
+</body>
+</html>

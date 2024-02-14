@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% set pagetitle = "Profile" %}
+{% include "head.html" %}
+
+<body>
+    {% include "navigation.html" %}
+    <div class="container">
+        <div class="row gx-3 mt-3">
+            <div class="col-lg-3 col-sm-12">
+            </div>
+            <div class="border-top border-start border-end col-lg-6 col-sm-12 text-center">
+                <h3 class="pt-3">{{ userinfo['firstname']}} {{ userinfo['lastname']}}</h3>
+                <hr>
+                <br>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+            </div>
+        </div>
+        <div class="row gx-3">
+            <div class="col-lg-3 col-sm-12">
+            </div>
+            <div class="col-lg-6 col-sm-12 text-center border-start border-end">
+                <div class="py-2">
+                    <img id="user_pfp" height='150' width="150"
+                        class="userpfp profile-image rounded-circle m-2 border border-2" src="{{ userinfo['pfpurl'] }}"
+                        alt="Profile img">
+                </div>
+                <!-- src="{{ userinfo['pfpurl'] }}" -->
+            </div>
+            <div class="col-lg-3 col-sm-12">
+            </div>
+        </div>
+
+        <!-- user information -->
+
+        <div class="row gx-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 col-sm-12 border-start border-end border-bottom p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>About me <br></h3>
+                        <div> {{ userinfo['bio']}} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+
+        <!-- user stats -->
+        <div class="row gx-3">
+            <div class="col-lg-3 col-sm-12">
+            </div>
+            <div class="border-top border-start border-end col-lg-6 col-sm-12 text-center">
+                <h3 class="pt-3">Stats</h3>
+                <hr>
+            </div>
+            <div class="col-lg-3 col-sm-12">
+            </div>
+        </div>
+        <div class="row gx-3 mb-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 col-sm-12 border-start border-end border-bottom p-3">
+                <div class="row">
+                    <div class="col-12 d-flex inline">
+                        <div class="me-1">How well {{userinfo['firstname']}} knows others (% of correct guesses): </div>
+                        <div>
+                            {{ (gratio * 100)|round(2, 'floor') }}%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex inline">
+                        <div class="me-1">How well others know {{userinfo['firstname']}}  (identifiability): </div>
+                        <div>
+                            {{ (idratio * 100)|round(2, 'floor') }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>

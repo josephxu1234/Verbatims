@@ -1,0 +1,162 @@
+/*.text-primary {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  }
+
+:root {
+    --bs-primary-rgb: 13, 110, 0;
+} */
+.bg-powder-blue {
+  background-color: #9ad4d6;
+}
+
+.bg-lavender {
+  background-color: #dbcbd8;
+}
+
+.bg-oxford-blue {
+  background-color: #101935;
+}
+
+.bg-steel-teal {
+  background-color: #488787;
+}
+
+.bg-light-blue  {
+  background-color: #FFFFFF;
+}
+
+.verbatim-input {
+  border-radius: 3px;
+}
+
+.channel-button {
+  height: 100px;
+}
+
+/* :root {
+  --animate-duration: 5s;
+} */
+
+/*
+ * FilePond Custom Styles
+ */
+
+ .filepond--drop-label {
+	color: #4c4e53;
+}
+
+.filepond--label-action {
+	text-decoration-color: #babdc0;
+}
+
+.filepond--panel-root {
+	background-color: #edf0f4;
+}
+
+body {
+  /* font-family: 'Alegreya Sans SC'; */
+  /* font-family: "Optima"; */
+  /* font-family: "Cambria"; */
+  font-family: "Quicksand", sans-serif;
+  /* font-family: 'Inter'; */
+  font-size: 18px;
+}
+
+.nav-tab-text {
+  font-size:20px;
+  font-weight:bold;
+}
+
+div.verbatim-fixed {
+  position: fixed;
+  bottom: 10px;
+  border: 3px solid #8AC007;
+} 
+
+.talkbubble {
+  background: #FFFFFF;
+  position: relative;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.guessing-side {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+/* .talkbubble:before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: 26px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-right: 26px solid #;
+  border-bottom: 13px solid transparent;
+} */
+
+.nav-bg {
+  /* background-color: #A23E99; */
+  background-color: #488787 /*#4A6362 */
+}
+.vert-bg-color {
+  background-color: #9ad4d6; /* #9ad4d6#95b1afac #7BB6B4 #2FFCEF */
+}
+
+/* .verbatim-bigger-div:hover + .verbatim-bubble-more {
+  background-color: #FFFFFF;
+  display: block
+}
+
+.verbatim-bubble-more {
+  display: none;
+} */
+
+#post-verbatim-div {
+  position: fixed;
+  bottom:0px;
+}
+
+.left-channel-display {
+  z-index: 0;
+}
+
+
+#overflow-verbatims {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#display-verbatims {
+  display: flex;
+  flex-direction: column;
+}
+
+#channel-body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.guess-button {
+  color: black;
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid black;
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.guess-button:hover {
+  color: #FFF;
+  background: black;
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+input[type="text"], textarea {
+  background-color : #F1F1F1; 
+}

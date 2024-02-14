@@ -1,0 +1,90 @@
+<nav class="sticky-top navbar navbar-expand-md navbar-light nav-bg p-0">
+    <button class="navbar-toggler border border-dark" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarToggler">
+        <a role="button" class="navbar-brand btn p-0 m-1 nav-link" href="index"><img class="ps-2 d-none d-md-block"
+                height="50px" src="./static/verbatims.jpg">
+        </a>
+        <ul class="navbar-nav me-auto d-flex justify-content-start">
+            <li class="nav-item d-block d-md-none">
+                <a id="home-button" class="btn m-1 mb-0 nav-link w-100"
+                href="index"><strong class="nav-tab-text">Home</strong></a>
+            </li>
+            {% set disabled = 'disabled' %}
+            {% if userexists %}
+            {% set disabled = '' %}
+            {% endif %}
+            <li class="nav-item">
+                <button id="create-channel-button" type="button" class="btn m-1 mb-0 nav-link fw-bold text-light w-100 {{ disabled }}"
+                    data-bs-toggle="modal" data-bs-target="#createChannelModal"><strong class="nav-tab-text">Create
+                        Channel</strong></button>
+            </li>
+            <li class="nav-item">
+                <button type="button" class="btn m-1 mb-0 nav-link w-100 text-light fw-bold {{ disabled }}" data-bs-toggle="modal"
+                    data-bs-target="#joinChannelModal"><strong class="nav-tab-text">Join Channel</strong></button>
+            </li>
+        </ul>
+        <a role="button" class="nav-item btn m-1 mb-0 me-2 nav-link fw-bold text-light ms-auto" href="faq"><strong class="nav-tab-text">FAQs</strong></a>
+        <a class="w3-button" href="settings"><img height='50' width="50"
+            class="userpfp profile-image rounded-circle border-dark border me-2" src="{{ curruserpfp }}"
+            alt="Profile img"></a>
+    </div>
+</nav>
+<!-- Create Channel Modal -->
+<div class="modal fade" id="createChannelModal" tabindex="-1" aria-labelledby="createChannelModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createChannelModalLabel">Create Channel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row mt-4">
+                        <div class="col-12 d-flex justify-content-center">
+                            <form action="create_channel" method="post" onsubmit="$('#createChannelModal').modal('hide')">
+                                <input type="text" id="channelname" name="channelname" placeholder="Channel Name" maxlength="50" required autofocus>
+                                <input type="submit" class="btn btn-outline-primary" value="Create Channel">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Join Group Modal -->
+<div class="modal fade" id="joinChannelModal" tabindex="-1" aria-labelledby="joinChannelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="joinChannelModalLabel">Join Channel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row mt-4">
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <form action="join_group" method="post" onsubmit="$('#joinChannelModal').modal('hide')">
+                                <input type="text" id="group_code" name="group_code" placeholder="Channel Code" maxlength="6"
+                                minlength="6" required autofocus>
+                                <input type="submit" class="btn btn-outline-primary" value="Join Channel">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+{% set pagetitle = "Settings" %}
+{% include "head.html" %}
+
+<body>
+    {% include "navigation.html" %}
+    <div class="container">
+        <div class="row gx-3 mt-3">
+            <div class="col-lg-2 col-sm-12">
+            </div>
+            <div class="border-top border-start border-end col-lg-8 col-sm-12 text-center">
+                <h3 class="pt-3">{{ userinfo['username'] }}'s Settings</h3>
+                <hr>
+                <br>
+            </div>
+            <div class="col-lg-2 col-sm-12">
+            </div>
+        </div>
+        <div class="row gx-3">
+            <div class="col-lg-2 col-sm-12">
+            </div>
+            <div class="col-lg-8 col-sm-12 text-center border-start border-end">
+                <div class="py-2">
+                    <img id="user_pfp" height='150' width="150"
+                        class="userpfp profile-image rounded-circle m-2 border border-2" src="{{ userinfo['pfpurl'] }}"
+                        alt="Profile img">
+                </div>
+                <!-- src="{{ userinfo['pfpurl'] }}" -->
+            </div>
+            <div class="col-lg-2 col-sm-12">
+            </div>
+        </div>
+        <div class="row gx-3 pt-2">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 text-center border-start border-end">
+                <button id="upload_widget_userpfp" class="btn btn-outline-dark"
+                    onclick="myWidget_userpfp.open()">Upload image</button>
+            </div>
+            <div class="col-lg-2 col-sm-12"></div>
+        </div>
+
+        <!-- user information -->
+        <div class="row gx-3">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 col-sm-12 border-start border-end border-bottom p-3">
+                <div class="row">
+                    <div class="col-6">
+                        <div>First Name</div>
+                        <input class="form-control" type="text" id="userfirstnameedit" minlength="1"
+                            placeholder="{{ userinfo['firstname']}}" value="{{ userinfo['firstname']}}" maxlength="50"
+                            autofocus>
+                        <br>
+                    </div>
+                    <div class="col-6">
+                        <div>Last Name</div>
+                        <input class="form-control" type="text" id="userlastnameedit" maxlength="50" minlength="1"
+                            placeholder="{{ userinfo['lastname']}}" value="{{ userinfo['lastname']}}">
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div>Bio</div>
+                        <input class="form-control" type="text" id="userbioedit" placeholder="{{ userinfo['bio']}}"
+                            value="{{ userinfo['bio']}}" maxlength="140">
+                        <br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <button id="update-user-info-button" class="btn btn-light bg-powder-blue disabled" type="button"
+                            onclick="updateUserInfo()">Update</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <br>
+
+        <!-- user stats -->
+        <div class="row gx-3">
+            <div class="col-lg-2 col-sm-12">
+            </div>
+            <div class="border-top border-start border-end col-lg-8 col-sm-12 text-center">
+                <h3 class="pt-3">Stats</h3>
+                <hr>
+            </div>
+            <div class="col-lg-2 col-sm-12">
+            </div>
+        </div>
+        <div class="row gx-3 mb-3">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 col-sm-12 border-start border-end border-bottom p-3">
+                <div class="row">
+                    <div class="col-12 d-flex inline">
+                        <div class="me-1">How well you know others (% of your guesses that are correct): </div>
+                        <div>
+                            {% if userinfo['numtotalguess'] != 0 %}
+                            {{ (gratio_agg * 100)|round(2, 'floor') }}%
+                            {% else: %}
+                            <p>0%</p>
+                            {% endif%}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex inline">
+                        <div class="me-1">How well others know you (% of guesses that identify you correctly): </div>
+                        <div>
+                            <p>{{ (idratio_agg * 100)|round(2, 'floor') }}%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="row gx-3 mb-3">
+            <div class="col-md-12 d-flex justify-content-center">
+                <a role="button" class="btn btn-outline-danger m-1" href="logout"><span class="pe-2">Logout</span><i
+                        class="bi bi-box-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    {% include "footer.html" %}
+    <script>
+        $('document').ready(setupSettings($('#userfirstnameedit').val(), $('#userlastnameedit').val(), $('#userbioedit').val()));
+    </script>
+</body>
+
+</html>
